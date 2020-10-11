@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>MIL 2nd Year</h2>
+  <p>ପରୀକ୍ଷା ପ୍ରସ୍ତୁତିପାଇଁ ପ୍ରଶ୍ନୋତ୍ତର ଅଭ୍ୟାସ<p>
+  <br>
+  <input class="form-control" id="findChapters" type="text" placeholder="Search..">
+  <br>
+  
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Chapter</th>
+      <th scope="col">Author</th>
+      <th scope="col">Link</th>
+    </tr>
+  </thead>
+  <tbody id="chaptersTable">
+  </tbody>
+</table>
+  
+  
+</div>
+
+
+<script id="questionsTrTemplate" type="x-tmpl-mustache">
+     <tr>
+      <th scope="row">{{id}}</th>
+      <td>{{chapter}}</td>
+      <td>{{author}}</td>
+      <td> <a href="chapter/{{slug}}.html" target="_blank">Open</a>  </td>
+    </tr>
+</script>
+
+<script src="https://unpkg.com/mustache@latest"></script>
+<script src="lib.js"></script>
+<script comment="List of available chapters">
+let csvChapters = `id,chapter,author,slug
+1,"ତାପସ୍ୱିନୀର ପତ୍ର","Dr. Subas Chandra Sahoo","draupadirapatra"
+`;
+let data = $.csv.toObjects(csvChapters);
+renderTable(data);
+</script>
+<script>
+$(document).ready(function(){
+  $("#findChapters").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#chaptersTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>

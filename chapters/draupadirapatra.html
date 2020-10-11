@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
+
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\003F';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+
+<a href="/">Back</a>
+
+<h2>ତାପସ୍ୱିନୀର ପତ୍ର </h2>
+<p>ପରୀକ୍ଷା ପ୍ରସ୍ତୁତିପାଇଁ ପ୍ରଶ୍ନୋତ୍ତର ଅଭ୍ୟାସ ।  ପ୍ରଶ୍ନଗୁଡିକ ଉପରେ କ୍ଲିକ କଲେ ସଠିକ ଉତ୍ତର ପାଇବ ।</p>
+
+<div id="qna">
+</div>
+
+ <script id="qaTemplate" type="x-tmpl-mustache">
+    <button class="accordion">{{question}}</button>
+    <div class="panel">
+      <p>{{answer}}</p>
+    </div>
+</script>
+
+<script src="https://unpkg.com/mustache@latest"></script>
+<script src="../lib.js"></script>
+<script comment="List of Questions">
+let csvQuestions = `question,answer
+ପ୍ତପସ୍ବିନୀ କିଏ ?,ତପସ୍ଵିନୀ ହେଉଛନ୍ତି ସତୀ ସୀତା ।
+ତପସ୍ଵିନୀର ପତ୍ର କାହା ଉଦ୍ଦେଶ୍ୟରେ ଲିଖିତ?,“ତପସ୍ବିନୀର ପତ୍ର” ପ୍ରଭୁ ରାମଚନ୍ଦ୍ରଙ୍କ ଉଦ୍ଦେଶ୍ୟରେ ଲିଖିତ ହୋଇଛି ।
+ଶରଣବସ୍ଥଳ ବୋଲି କବି କାହାକୁ କହିଛନ୍ତି ?,ଶରଣାଗତକୁ ନିଜର ସନ୍ତାନପରି ସ୍ନେହ ପ୍ରଦାନ କରୁଥୁବାରୁ ପ୍ରଭୁ ରାମଚନ୍ଦ୍ରଙ୍କୁ କବି ଏଠାରେ ଶରଣବତ୍ସଳ ବୋଲି କହିଛନ୍ତି ।
+ଦୁଃଖ ଗିରିର ବଜ୍ର କିଏ ?,ମର୍ଯ୍ୟାଦାପୁରୁଷ ପ୍ରଭୁ ରାମଚନ୍ଦ୍ର ଦୁଃଖ ଗିରିର ବଜ୍ର ଅଟନ୍ତି ।
+`;
+let data = $.csv.toObjects(csvQuestions);
+renderQnA(data)
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+</body>
+</html>
