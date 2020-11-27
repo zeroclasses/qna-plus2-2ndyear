@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180297193-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-180297193-1');
+</script>
+<title>Zeroclasses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
+
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\003F';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="text-center" style="background-color:black">
+   <img src="../Facebook_Cover.png" style="height: 100px; width:auto;" class="img-fluid" alt="Responsive image">
+ </div>
+
+<a href="/qna-plus2-2ndyear">Back</a>
+<h2>ଆଧ୍ୟାତ୍ମିକ ଭିତ୍ତି</h2>
+<p>ପରୀକ୍ଷା ପ୍ରସ୍ତୁତିପାଇଁ ପ୍ରଶ୍ନୋତ୍ତର ଅଭ୍ୟାସ ।  ପ୍ରଶ୍ନଗୁଡିକ ଉପରେ କ୍ଲିକ କଲେ ସଠିକ ଉତ୍ତର ପାଇବ ।</p>
+<p><a href = "mailto:zeroclasses.odisha@gmail.com">Contact Us</a> </p>
+<div id="qna"></div>
+</div>
+
+ <script id="qaTemplate" type="x-tmpl-mustache">
+    <button class="accordion"><b>{{counter}}</b>  {{question}}</button>
+    <div class="panel">
+      <p>{{answer}}</p>
+    </div>
+</script>
+
+<script src="https://unpkg.com/mustache@latest"></script>
+<script src="../lib.js"></script>
+<script comment="List of Questions">
+let csvQuestions = `question,answer
+କିଏ ବେଦର ଶ୍ରେଣୀବିଭାଗ କରି ସେଥିରେ ନିହିତ ତତ୍ତ୍ଵକୁ ପୁରାଣ ଆକାରରେ ପ୍ରକାଶ କରିଥିଲେ ?,ମହର୍ଷି ବ୍ୟାସ ବେଦର ଶ୍ରେଣୀବିଭାଗ କରି ସେଥିରେ ନିହିତ ତତ୍ତ୍ଵକୁ ପୁରାଣ ଆକାରରେ ପ୍ରକାଶ କରିଥିଲେ । 
+ଶିଷ୍ୟମାନେ କିପରି ବ୍ରହ୍ମଜ୍ଞାନ ଲାଭ ପାଇଁ ଉପଯୁକ୍ତ ବିବେଚିତ ହୁଅନ୍ତି ?,ଶିଷ୍ୟମାନେ ଗୁରୁଙ୍କର ସନ୍ତୋଷଭାଜନ ହେଲେ ବ୍ରହ୍ମଜ୍ଞାନ ଲାଭ ପାଇଁ ଉପଯୁକ୍ତ ବିବେଚିତ ହୁଅନ୍ତି ।
+ବେଦାନ୍ତ ଦର୍ଶନ ଅନୁସାରେ ଦୁଃଖକୁ କେତୋଟି ଶ୍ରେଣୀରେ ବିଭକ୍ତ କରାଯାଇଛି ?,ବେଦାନ୍ତ ଦର୍ଶନ ଅନୁସାରେ ଦୁଃଖକୁ ତିନୋଟି ଶ୍ରେଣୀରେ ବିଭକ୍ତ କରାଯାଇଛି ।
+କର୍ମ ଭକ୍ତି ସମନ୍ୱିତ ଓ ଜ୍ଞାନର ସାଧନ ନଥିଲେ ତାହା କେଉଁଥିରେ ପରିଣତ ହୁଏ ?,କର୍ମ ଭକ୍ତି ସମନ୍ୱିତ ଓ ଜ୍ଞାନର ସାଧନ ନଥିଲେ ତାହା ଅକର୍ମରେ ପରିଣତ ହୁଏ ।
+ଅଧ୍ୟନୟନ କ୍ଷେତ୍ରରେ ଶିଷ୍ୟର ପ୍ରଥମ ସାଧନା କ’ଣ ? ,ଅଧ୍ୟନୟନ କ୍ଷେତ୍ରରେ ଅଧିକାରୀତ୍ଵ ଶିଷ୍ୟର ପ୍ରଥମ ସାଧନା ଅଟେ ।
+ବେଦର ଆଦ୍ୟ ଉତ୍ସରଣ କିପରି ଘଟିଥିଲା ?,ପୁରାଣ ପ୍ରସିଦ୍ଧ ଭାରତଭୂମିରେ ଆର୍ଯ୍ୟରଷି ବୃନ୍ଦ ଯେତେବେଳେ ପୁଣ୍ୟତୋୟା ସରସ୍ୱତୀ ନଦୀ କୂଳରେ ପ୍ରକୃତିର ବିରାଟତା ଓ ଅନିର୍ବଚନୀୟ ସୌନ୍ଦର୍ଯ୍ୟ ସନ୍ଦର୍ଶନ କଲେ, ସେତେବେଳେ ସେମାନଙ୍କ କଣ୍ଠରୁ ଯେଉଁ ଦିବ୍ୟଗୀତିସମୂହ ବାହାରି ପଡ଼ିଥିଲା ସେଗୁଡ଼ିକ ବେଦ ରୂପରେ ପରିଚିତ ହେଲା ଓ ସେଇଠୁ ହିଁ ବେଦର ଆଦ୍ୟ ଉତ୍ସରଣ ଘଟିଥିଲା ।
+ମାନବର କର୍ମକ୍ଷେତ୍ର କିଭଳି ହେବା ଉଚିତ ?, ମାନବର କର୍ମକ୍ଷେତ୍ର ଭକ୍ତି ଓ ଜ୍ଞାନର ସହେଯାଗରେ ପରିଚାଳିତ ହେବା ଉଚିତ ।
+ଆଧ୍ୟାତ୍ମିକ ଦୁଃଖ କହିଲେ କଣ ବୁଝାଯାଏ ?,ଯେଉଁ ଦୁଃଖ କେବଳ ଭୋକ୍ତାର ଦେହ ଓ ମନରୁ ଜାତ ହୁଏ, ତାହାହିଁ ଆଧ୍ୟାତ୍ମିକ ଦୁଃଖ । 
+ଆଧ୍ୟାତ୍ମିକ ଶବ୍ଦର ଅର୍ଥ କହି ଲେ କ’ଣ ବୁଝିବାକୁ ହୋଇଥାଏ ?,ଯାହା 'ଜୀବାତ୍ମା ସଂକ୍ରାନ୍ତ’ ଅର୍ଥାତ୍ ଜୀବାତ୍ମାର ଶାରୀରିକ ଓ ମାନସିକ କ୍ରିୟା ପ୍ରକ୍ରିୟାରୁ ଜାତ ତାହାହିଁ ଆଧ୍ୟାତ୍ମିକତା ।
+ଆଧ୍ୟାତ୍ମିକ ଭିତ୍ତିର ତାତ୍ପର୍ଯ୍ୟ କ’ଣ ?, ଆଧ୍ୟାତ୍ମିକ ଭିତ୍ତିର ତାତ୍ପର୍ଯ୍ୟ ହେଉଛି ପରାତ୍ପର ଆତ୍ମଶକ୍ତି ବା ଐଶୀଶକ୍ତିର ଅସ୍ତିତ୍ଵରେ ବିଶ୍ଵାସ କରିବା ।
+ଗ୍ରନ୍ଥ ରଚନା ଓ ଗ୍ରନ୍ଥ ସମାପ୍ତି ନିମିତ୍ତ ପ୍ରାଚୀନ ଭାରତରେ ଗ୍ରନ୍ଥ କାରମାନେ ଆରମ୍ଭରୁ କାହାର କୃପାଭିକ୍ଷା କରିଥା'ନ୍ତି ?,ଗ୍ରନ୍ଥ ରଚନା ଓ ଗ୍ରନ୍ଥ ସମାପ୍ତି ନିମିତ୍ତ ପ୍ରାଚୀନ ଭାରତରେ ଗ୍ରନ୍ଥକାରମାନେ ଆରମ୍ଭରୁ  ଦୈବୀଶକ୍ତିର କୃପାଭିକ୍ଷା କରିଥା’ନ୍ତି ।
+ବ୍ୟାସଦେବ କାହାକୁ ସନ୍ତୁଷ୍ଟ କରି ବିରାଟ ପୁରାଣ ପରମ୍ପରା ସୃଷ୍ଟି କରିଥିଲେ ?,ବାଗଦେବୀଙ୍କୁ ସନ୍ତୁଷ୍ଟ କରି ବ୍ୟାସଦେବ ବିରାଟ ପୁରାଣ ପରମ୍ପରା ସୃଷ୍ଟି କରିଥିଲେ । 
+ଭାରତୀୟ ଜୀବନ ଗର୍ଭାଧାନଠାରୁ ଆରମ୍ଭକରି କାହା ଭିତ୍ତିରେ ଚାଳିତ ହୋଇ ଆସିଅଛି ?,ଭାରତୀୟ ଜୀବନ ଗର୍ଭଧାନଠାରୁ ଆରମ୍ଭ କରି ଆଧ୍ୟାତ୍ମିକ ଭିତ୍ତିରେ ଚାଳିତ ହୋଇ ଆସିଅଛି ।
+ଭାରତୀୟ ଜୀବନ କେଉଁ ମାନଙ୍କୁ ଦମନ କରି ନୈତିକତାର ଚରମ ସୀମାକୁ ଗତି କରିବାକୁ ସତତ ଚେଷ୍ଟିତ ଥିଲା ?,ଭାରତୀୟ ଜୀବନ ଷଡ଼ରିପୁମାନଙ୍କୁ ଦମନ କରି ନୈତିକତାର ଚରମ ସୀମାକୁ ଗତି କରିବାକୁ ସତତ ଚେଷ୍ଟିତ ଥିଲା ।
+ନିଜକୁ କ’ଣ ବୋଲି କହି ଆଜି ମାନବ ଆପଣାର ତଥା ସମାଜ ଓ ଜାତିର ଅକଲ୍ୟାଣ ସାଧନ କରୁଅଛି ?,ନିଜକୁ ‘କର୍ତ୍ତା’ ବୋଲି କହି ଆଜି ମାନବ ଆପଣାର ତଥା ସମାଜ ଓ ଜାତିର ଅକଲ୍ୟାଣ ସାଧନ କରୁଅଛି ।
+ସାରା ପୃଥିବୀକୁ ଗାନ୍ଧିଜୀଙ୍କର କେଉଁ ନୀତି ପ୍ରଭାବିତ କରି ଆସୁଅଛି ?,ସାରା ପୃଥିବୀକୁ ଗାନ୍ଧିଜୀଙ୍କର ଅହିଂସା ନୀତି ପ୍ରଭାବିତ କରି ଆସୁଅଛି ।
+ସରସ୍ଵତୀ ନଦୀ କୂଳରେ କେଉଁମାନଙ୍କ କଣ୍ଠରୁ ଦିବ୍ୟଗୀତ ଝରିଥିଲା ?,ସରସ୍ୱତୀ ନଦୀକୂଳରେ ଆର୍ଯ୍ୟରଷିବୃନ୍ଦମାନଙ୍କ କଣ୍ଠରୁ ଦିବ୍ୟଗୀତ ଝରିଥିଲା ।
+`;
+
+let data = $.csv.toObjects(csvQuestions);
+renderQnA(data)
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+</body>
+</html>
