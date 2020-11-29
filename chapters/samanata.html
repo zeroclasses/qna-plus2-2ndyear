@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180297193-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-180297193-1');
+</script>
+<title>Zeroclasses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
+
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\003F';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="text-center" style="background-color:black">
+   <img src="../Facebook_Cover.png" style="height: 100px; width:auto;" class="img-fluid" alt="Responsive image">
+ </div>
+
+<a href="/qna-plus2-2ndyear">Back</a>
+<h2>ସମାନତା : ସ୍ଵାଧୀନତା : ଭ୍ରାତୃତ୍ୱ</h2>
+<p>ସଂକ୍ଷିପ୍ତ ଉତ୍ତରମୂଳକ ପ୍ରଶ୍ନ । ଗୋଟିଏ ବାକ୍ୟରେ ଉତ୍ତର ଲେଖ । ପ୍ରଶ୍ନର ମୂଲ୍ୟ ୧ ନମ୍ବର ।</p>
+<p><a href = "mailto:zeroclasses.odisha@gmail.com">Contact Us</a> </p>
+<div id="qna"></div>
+</div>
+
+ <script id="qaTemplate" type="x-tmpl-mustache">
+    <button class="accordion"><b>{{counter}}</b>  {{question}}</button>
+    <div class="panel">
+      <p>{{answer}}</p>
+    </div>
+</script>
+
+<script src="https://unpkg.com/mustache@latest"></script>
+<script src="../lib.js"></script>
+<script comment="List of Questions">
+let csvQuestions = `question,answer
+ସମାଜବାଦୀ ଲୋକନ୍ୟାୟଟି ହାତରେ କ'ଣ ଧରାଇ ଦିଆଯିବ ?,ସମାଜବାଦୀ ଲୋକନ୍ୟାୟଟି ହାତରେ ଯାବତୀୟ ମୀମାଂସାର ରଜ୍ଜୁଗୁଡ଼ିକୁ ଧରାଇ ଦିଆଯିବ ।
+ସମାନତାର ପାହାଚଟି ଉପରେ ପହଞ୍ଚିବାକୁ କାହାର ସମ୍ମୁଖୀନ ହେବାକୁ ପଡୁଛି?,ସମାନତାର ପାହାଚଟି ଉପରେ ପହଞ୍ଚିବାକୁ ବହୁ ବିରୋଧର ସମ୍ମୁଖୀନ ହେବାକୁ ପଡ଼ୁଛି ।
+ପୃଥିବୀ ସାରା ଲୋକଙ୍କଦ୍ୱାରା ବ୍ୟବହୃତ ହେଉଥିବା ତିନୋଟି ଶବ୍ଦ କ’ଣ ?,ପୃଥିବୀ ସାରା ଲୋକଙ୍କ ଦ୍ଵାରା ବ୍ୟବହୃତ ହେଉଥିବା ତିନୋଟି ଶବ୍ଦ ହେଉଛି- ‘ସମାନତା:ସ୍ଵାଧୀନତା:ଭ୍ରାତୃତ୍ଵ’ । 
+ମୂଳ ଫରାସୀ ସ୍ଲୋଗାନର ପ୍ରଥମ ଶବ୍ଦଟି କ’ଣ ଥିଲା ?,ମୂଳ ଫରାସୀ ସ୍ଲୋଗାନର ପ୍ରଥମ ଶବ୍ଦଟି ହେଉଛି ସ୍ୱାଧୀନତା ।
+ବିଶ୍ୱସ୍ତରୀୟ କୌଣସି ମାହାଦରବାରରେ କ’ଣ ପାସ୍ ହୋଇଗଲେ ମଧ୍ୟ ଭ୍ରାତୃତ୍ଵ ପ୍ରତିଷ୍ଠା ଦିଗରେ ଆଦୌ ବିଶେଷ ଫଳ ମିଳିବ ନାହିଁ ?,ବିଶ୍ଵସ୍ତରୀୟ କୌଣସି ମାହାଦରବାରରେ ପ୍ରସ୍ତାବଟିଏ ପାସ୍ ହୋଇଗଲେ ମଧ୍ୟ ଭାତୃତ୍ୱ ପ୍ରତିଷ୍ଠା ଦିଗରେ ଆଦୌ ବିଶେଷ ଫଳ ମିଳିବ ନାହିଁ ।
+କୌଣସି ଅର୍ଥ ରେ କାହାକୁ ଆମେ କେବଳ ଏକ ରାଜନୀତିକ କାର୍ଯ୍ୟକ୍ରମର ଅଙ୍ଗ ବୋଲି କହିପାରିବା ନାହିଁ ?,କୌଣସି ଅର୍ଥରେ ଭାତୃତ୍ଵକୁ ଆମେ କେବଳ ଏକ ରାଜନୀତିକ କାର୍ଯ୍ୟକ୍ରମର ଅଙ୍ଗ ବୋଲି କହିପାରିବା ନାହିଁ ।
+ନୀତି କ୍ଷେତ୍ରର କେଉଁଗୁଡିକୁ ମସ୍ତ ମସ୍ତ ଫାଙ୍କି ଦିଆଯାଇଛି ?,ନୀତି କ୍ଷେତ୍ରର ମାନବ ସଂହତିଗୁଡ଼ିକୁ ମସ୍ତ ମସ୍ତ ଫାଙ୍କି ଦିଆଯାଇଛି ।
+ପ୍ରାଥମିକ ସଫଳତା ପରେ ଫରାସୀ ବିପ୍ଳବର ସଂଗ୍ରାମୀମାନେ ବିଭାଜିତ ହେଲେ କାହିଁକି ?,ପ୍ରାଥମିକ ସଫଳତା ପରେ ଫରାସୀ ବିପ୍ଳବର 
+ସଂଗ୍ରାମୀମାନେ ବିଭାଜିତ ହେବାର କାରଣ ହେଲା ବିପ୍ଳବୀ ବୃହତ୍ ନେତାମାନେ ବହୁ ଖାସ୍ ସ୍ୱାର୍ଥବାସନାରେ ଜଡ଼ିତ ହୋଇପଡ଼ିଥିଲେ ।
+କେଉଁ ଲକ୍ଷ୍ୟଟିକୁ ଗୌଣ କରିଦେଇ ରୁଷିଆ ଏକ ଶକ୍ତିଶାଳୀ ମହାନ୍ ଦେଶ ଗଢ଼ିବା ଲାଗି ମନ ଦେଲା ?,ସମଗ୍ର ଜଗତରୁ ଶୋଷଣ ତଥା ଆନୁଷଙ୍ଗିକ ଯାବତୀୟ ଅସମାନତାକୁ ଦୂର କରିବାର ନିଜର ସେଇ ପ୍ରଥମ ଲକ୍ଷ୍ୟଟିକୁ ଗୌଣ କରିଦେଇ ରୁଷିଆ ଏକ ଶକ୍ତିଶାଳୀ ମହାନ୍ ଦେଶ ଗଢ଼ିବା ଲାଗି ମନ ଦେଲା ।
+କେଉଁ ମଞ୍ଜ ସତ୍ୟକୁ ସ୍ଵୀକାର କରିନେବା ଏକ ବିରାଟ କଥା ?,ପ୍ରତ୍ୟେକ ମନୁଷ୍ୟର ଠିକ୍ ମୋ’ରି ଭଳି ସମାନ ଅଧିକାରମାନ ରହିଛି - ସାଧୁତା ସହିତ ଏତିକିମାତ୍ର ମଞ୍ଜ ସତ୍ୟକୁ ସ୍ଵୀକାର କରିନେବା ଏକ ବିରାଟ କଥା ।
+କେଉଁ ତିନିଗୋଟି ଶବ୍ଦ ବିଶେଷ ଅର୍ଥକୁ ବହନ କରିଥାଏ ?,ସମାନତା, ସ୍ଵାଧୀନତା ଓ ଭ୍ରାତୃତ୍ଵ ଏହି ତିନିଗୋଟି ଶବ୍ଦ ବିଶେଷ ଅର୍ଥକୁ ବହନ କରିଥାଏ ।
+ଫରାସୀ ବିପ୍ଳବର ପତାକାରେ ତିନି ଗୋଟି ଶବ୍ଦ ପ୍ରତିଫଳିତ ହୋଇଥିଲା ବୋଲି କେଉଁମାନେ କହନ୍ତି ?,ସମୀକ୍ଷକମାନେ କହନ୍ତି ଯେ, ଫରାସୀ ବିପ୍ଳବର ପତାକାରେ ତିନିଗୋଟି ଶବ୍ଦ ପ୍ରତିଫଳିତ ହୋଇଥିଲା ।
+କେଉଁ ସ୍ଲୋଗାନରେ ସର୍ବପ୍ରଥମ ଦାବିଥିଲା ସ୍ଵାଧୀନତା?,ମୂଳ ଫରାସୀ ସ୍ଲୋଗାନ୍‌ରେ ସର୍ବପ୍ରଥମ ଦାବିଥିଲା ସ୍ଵାଧୀନତା । 
+କେଉଁମାନେ କେବେ ବି ନିଜର ଶାସନ କରିପାରିବେ, ଏ ପ୍ରକାର କଳ୍ପନା ବ୍ୟାଖ୍ୟାକାରମାନେ କରିନଥିବେ ?,ସାଧାରଣ ମଣିଷ ଗୁଡ଼ାକ ଯେ ଦିନେ ନିଜର ଶାସନ କରି ପାରିବେ, ଏ ପ୍ରକାର କଳ୍ପନା ବ୍ୟାଖ୍ୟାକାର ମାନେ, କରିନଥିବେ ।
+ସଂଗ୍ରହାଳୟରେ ଗୋଟିଏ ସ୍ମାରକ ପ୍ରାୟ ହୋଇ କେଉଁମାନେ ରହିଛନ୍ତି ?,ସଂଗ୍ରହାଳୟରେ ଗୋଟିଏ ସ୍କାରକ ପ୍ରାୟ ହୋଇ ରାଜାମାନେ ରହିଛନ୍ତି । 
+କେଉଁମାନେ ନିଷ୍ପତ୍ତି କରୁଛନ୍ତି ଓ ରାଜା କେବଳ ସେଥିରେ ସ୍ଵାକ୍ଷର କରୁଛନ୍ତି ?,ପ୍ରଜାମାନେ ହିଁ ନିଷ୍ପତ୍ତି କରୁଛନ୍ତି ଓ ରାଜା କେବଳ ସେଥିରେ ସ୍ଵାକ୍ଷର କରୁଛନ୍ତି ।
+ରାଜ୍ୟର ସ୍ଵାର୍ଥ ଅନୁସାରେ କିଏ ଶାସନ କରୁଥିଲା ?,ରାଜାର ସ୍ଵାର୍ଥ ଅନୁସାରେ ରାଜତନ୍ତ୍ର ଶାସନ କରୁଥିଲା । 
+କୋଟି କୋଟି ମନୁଷ୍ୟଙ୍କର ଭାଗ୍ୟକୁ କିଏ କାମୁଢ଼ି ଧରିଛି ?,ଅଶିକ୍ଷା, ଦାରିଦ୍ର୍ୟ, ରୋଗ ନିତିଦିନର ସ୍ଵାଭାବିକ ଶୈଳୀପ୍ରାୟ ପ୍ରାୟ ହୋଇ କୋଟି କୋଟି ମନୁଷ୍ୟଙ୍କର ଭାଗ୍ୟକୁ କାମୁଡ଼ି ଧରିଛି ।
+ଫରାସୀ ବିପ୍ଳବର ପ୍ରଥମ କାଳରେ, ସଂଗ୍ରାମୀମାନଙ୍କ ସମ୍ମୁଖରେ କେଉଁପରି ଚିତ୍ରଟିଏ ରହିଥିଲା ?,ଫରାସୀ ବିପ୍ଳବର ପ୍ରଥମ କାଳରେ ସଂଗ୍ରାମୀମାନଙ୍କ ସମ୍ମୁଖରେ ଏକ ସର୍ବ-ମାନବିକ ସାହସୀ ବିଶ୍ୱଚିତ୍ରଟିଏ ରହିଥିଲା।
+`;
+let data = $.csv.toObjects(csvQuestions);
+renderQnA(data)
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+</body>
+</html>
