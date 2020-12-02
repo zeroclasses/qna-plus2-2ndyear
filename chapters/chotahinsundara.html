@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180297193-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-180297193-1');
+</script>
+<title>Zeroclasses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
+
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\003F';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="text-center" style="background-color:black">
+   <img src="../Facebook_Cover.png" style="height: 100px; width:auto;" class="img-fluid" alt="Responsive image">
+ </div>
+
+<a href="/qna-plus2-2ndyear">Back</a>
+<h2>ଛୋଟ ହିଁ ସୁନ୍ଦର</h2>
+<p>ପରୀକ୍ଷା ପ୍ରସ୍ତୁତିପାଇଁ ପ୍ରଶ୍ନୋତ୍ତର ଅଭ୍ୟାସ ।  ପ୍ରଶ୍ନଗୁଡିକ ଉପରେ କ୍ଲିକ କଲେ ସଠିକ ଉତ୍ତର ପାଇବ ।</p>
+<p><a href = "mailto:zeroclasses.odisha@gmail.com">Contact Us</a> </p>
+<div id="qna"></div>
+</div>
+
+ <script id="qaTemplate" type="x-tmpl-mustache">
+    <button class="accordion"><b>{{counter}}</b>  {{question}}</button>
+    <div class="panel">
+      <p>{{answer}}</p>
+    </div>
+</script>
+
+<script src="https://unpkg.com/mustache@latest"></script>
+<script src="../lib.js"></script>
+<script comment="List of Questions">
+let csvQuestions = `question?answer
+ବିଂଶ ଶତାବ୍ଦୀର ବିଜ୍ଞାନ କିପରି ଭାବରେ ଜଗତକୁ ଦେଖିବାକୁ ଆଗ୍ରହୀ ହୋଇଛି ? ବିଂଶ ଶତାବ୍ଦୀର ବିଜ୍ଞାନର ଦୃଷ୍ଟି ସାମଗ୍ରିକ ଭାବେ ଜଗତକୁ ଦେଖିବା ପାଇଁ ଆଗ୍ରହୀ ହୋଇଛି ।
+ପୂର୍ବ କେତେ ଶତାବ୍ଦୀ ଧରି ପଦାର୍ଥ ମୂଳବସ୍ତୁ ରୂପେ ବିବେଚିତ ହେଉଥିଲା ? ପୂର୍ବ ତିନି ଶତାବ୍ଦୀ ଭିତରେ ପଦାର୍ଥର ଏତେ ଅଧିକ ଗୁରୁତ୍ଵ ଥିଲା ଯେ ତାହା ମୂଳବସ୍ତୁ ରୂପେ ବିବେଚିତ ହେଉଥିଲା ।
+ରହସ୍ୟବାଦ ଅନୁସାରେ ଜଗତର ମୂଳ ସତ୍ତା କଣ ? ରହସ୍ୟବାଦୀ କହେ, ଚେତନା ହେଉଛି ମୂଳସତ୍ତା,ପଦାର୍ଥ ନୁହେଁ ।
+କାହାର ଜୟଧ୍ଵନି ଦେଇ ବିଜ୍ଞାନ ଯାନ୍ତ୍ରିକ ବାଟେ ମାଡ଼ି ଚାଲିଲା ? ପୌରୁଷର ଜୟଧ୍ଵନି ଦେଇ ବିଜ୍ଞାନ ଯାନ୍ତ୍ରିକ ବାଟେ ମାଡ଼ି ଚାଲିଲା ।
+କେଉଁ ଭାବର ଜାଗରଣ ହେବା ମଣିଷ ପକ୍ଷରେ ଶୁଭଙ୍କର ହେବ ?ନାରୀ ଭାବର ଜାଗରଣ ହେବା ମଣିଷ ପକ୍ଷରେ ଶୁଭଙ୍କର ହେବ ।
+ପୁରୁଷର ପ୍ରଧାନ ନେତ୍ର କଣ ? ପୁରୁଷର ପ୍ରଧାନ ନେତ୍ର ଜ୍ଞାନ ।
+କାହାର ଭଣ୍ଡାର ଅସରନ୍ତି ନୁହେଁ ? ପ୍ରକୃତିର ଭଣ୍ଡାର ଅସରନ୍ତି ନୁହେଁ ।
+ସ୍କୁମାଚାରଙ୍କର କେଉଁ ବହିଟିକୁ ସମାଲୋଚନା କରି ଗାର୍ଡ଼ିଆନ୍ କାଗଜ ଏହାକୁ 'Buddhist Ecomomics' ବୋଲି କହିଥିଲେ ? 'ଛୋଟ ହି ସୁନ୍ଦର' (Small is Beautiful) ବହିଟିକୁ ସମାଲୋଚନା କରି ଗାର୍ଡ଼ିଆନ୍ କାଗଜ ଏହାକୁ 'Buddhist Ecomomics' ବୋଲି କହିଥିଲେ
+ନିଉକ୍ଲିୟର ମଳ ଦ୍ଵାରା କଣ ହେବ ? ନିୟୁକ୍ଲିୟର ମଳ ପୃଥିବୀକୁ ଭୟଙ୍କର ବିପଦ ଡାକିଆଣିବ ।
+ଆଧୁନିକ ମଣିଷର ଦୁର୍ଦ୍ଦଶା ପାଇଁ କିଏ ଦାୟୀ ? ଖଣ୍ଡିତ ଦୃଷ୍ଟିକୋଣ ଓ ମୂଲ୍ୟବୋଧ ବିବର୍ଜିତ ଆଧୁନିକ ଟେକ୍ନୋଲୋଜି ମଣିଷର ସବୁ ଦୁର୍ଦ୍ଦଶାପାଇଁ ଦାୟୀ ।
+ଛୋଟ ହିଁ ସୁନ୍ଦର ପ୍ରବନ୍ଧଟି କେଉଁ ପୁସ୍ତକ ଅବଲମ୍ବନରେ ରଚିତ ? ବ୍ରିଟିଶ ଅର୍ଥନୀତିଜ୍ଞ ସ୍କୁମାଚାରଙ୍କ ଦ୍ଵାରା ପ୍ରକାଶିତ 'Small is Beautiful' (୧୯୭୩) ନାମକ ପ୍ରସିଦ୍ଧ ଗ୍ରନ୍ଥ ଅବଲମ୍ବନରେ ରଚିତ ‘ଛୋଟ ହିଁ ସୁନ୍ଦର’।
+କେଉଁ ଚିନ୍ତାଶୀଳ ଲେଖକ ଦ୍ଵୟ ଆଧୁନିକ ବିଜ୍ଞାନକୁ ଯାନ୍ତ୍ରିକତା ବାଟରେ ମତେଇ ନେଲେ ? ବେକନ୍ ଓ ଦେକାର୍ତେ ଆଧୁନିକ ବିଜ୍ଞାନକୁ ଯାନ୍ତ୍ରିକତା ବାଟରେ ମତେଇ ନେଲେ ।
+ଭଲଭାବରେ ବଞ୍ଚିବାକୁ ହେଲେ ମଣିଷ କାହାକୁ ଦାସୀ ପରି ଖଟାଇବା ପାଇଁ ଉଚିତ ମଣୁଥିଲା ? ଭଲଭାବରେ ବଞ୍ଚିବାକୁ ହେଲେ ମଣିଷ ପ୍ରକୃତିକୁ ଦାସୀ ପଣରେ ଖଟାଇବାକୁ ଉଚିତ ମଣୁଥିଲା ।
+ଅର୍ଥନୀତିଜ୍ଞଙ୍କ ଆହ୍ଵାନ କ୍ରମେ ମଣିଷ କାହାକୁ ଈଶ୍ଵରଙ୍କ ଆସନରେ ବସାଇଲା ? ଅର୍ଥନୀତିଜ୍ଞଙ୍କ ଆହ୍ଵାନ କ୍ରମେ ମଣିଷ ଅର୍ଥ ଉପାର୍ଜନକୁ ଈଶ୍ଵରଙ୍କ ଆସନରେ ବସାଇଲା ।
+କେଉଁ କଥାକୁ ଆମେରିକା ବାସୀ ସଫଳ ଅର୍ଥନୈତିକ ବ୍ୟବସ୍ଥାର ପ୍ରମାଣପତ୍ର ବୋଲି ଭାବନ୍ତି ? ଆମେରିକାର ବିଭବ ହିଁ ସେ ଦେଶର ଅର୍ଥନୈତିକ ବ୍ୟବସ୍ଥାର ସଫଳତାର ପ୍ରମାଣ ପତ୍ର। ।
+ବର୍ଭମାନର ଅର୍ଥନୀତି ସାମ୍ପ୍ରତିକ ସମସ୍ୟାର ସମାଧାନ ଦିଗରେ ଅସମର୍ଥ କାହିଁକି ? ବର୍ତ୍ତମାନର ଅର୍ଥନୀତି ଊନ୍ନବିଂଶ ଶତାବ୍ଦୀର ବୈଜ୍ଞାନିକ ବିଶ୍ଵାସ ଉପରେ ନିର୍ଭରଶୀଳ ହୋଇଥିବାରୁ ସାଂପ୍ରତିକ ସମସ୍ୟାର ସମାଧାନ ଦିଗରେ ଅସମର୍ଥ ।
+`;
+
+let data = $.csv.toObjects(csvQuestions,{separator:"?"});
+renderQnA(data)
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+</body>
+</html>
